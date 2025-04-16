@@ -90,12 +90,26 @@
     }
     .imagen-flotante {
     position: fixed;
-    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
-    right: 20px; /* Ajusta la distancia desde la derecha */
-    width: 150px; /* Ajusta el ancho de la imagen */
-    z-index: 1000; /* Asegura que la imagen esté por encima de otros elementos */
-    user-select: none; /* Evita que se pueda seleccionar la imagen */
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    z-index: 1000; 
+    user-select: none;
     }
+    .ko-fi-button {
+    position: fixed;
+    bottom: 20px; 
+    left: 20px;
+    width: 80px; 
+    z-index: 1000;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    }
+
+    .ko-fi-button:hover {
+    opacity: 1;
+    }
+
     .boton-enlace::after {
         content: '';
         position: absolute;
@@ -131,6 +145,9 @@
 </style>
 </head>
 <body>
+    <a href="https://ko-fi.com/mancostudios" target="_blank" rel="noopener noreferrer">
+    <img src="https://static.wikia.nocookie.net/logopedia/images/e/ed/61e11149b3af2ee970bb8ead_Ko-fi_logo.png/revision/latest?cb=20220415201655" alt="Apoya en Ko-fi" class="ko-fi-button">
+    </a>
     <img src="textoms.png" alt="Texto MS" class="imagen-flotante">
     <header>
         <h1>Eventos, series, mods, configuraciones, playmakers, y más</h1>
