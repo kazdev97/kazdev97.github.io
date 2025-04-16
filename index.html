@@ -175,13 +175,15 @@
         background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
     }
     .imagen-flotante {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 150px;
-    z-index: 1000; 
-    user-select: none;
+        position: fixed;
+        top: 20px;       
+        left: 50%;       
+        transform: translateX(-50%); 
+        width: 150px;
+        z-index: 1000;
+        user-select: none;
     }
+
     .ko-fi-button {
     position: fixed;
     bottom: 20px; 
