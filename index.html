@@ -88,6 +88,14 @@
     .boton-skins {
         background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
     }
+    .imagen-flotante {
+    position: fixed;
+    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+    right: 20px; /* Ajusta la distancia desde la derecha */
+    width: 150px; /* Ajusta el ancho de la imagen */
+    z-index: 1000; /* Asegura que la imagen esté por encima de otros elementos */
+    user-select: none; /* Evita que se pueda seleccionar la imagen */
+    }
     .boton-enlace::after {
         content: '';
         position: absolute;
@@ -123,6 +131,7 @@
 </style>
 </head>
 <body>
+    <img src="textoms.png" alt="Texto MS" class="imagen-flotante">
     <header>
         <h1>Eventos, series, mods, configuraciones, playmakers, y más</h1>
     </header>
