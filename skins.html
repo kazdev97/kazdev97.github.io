@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sube tu Skin - MPM</title>
+  <style>
+    /* Estilos globales */
+    body {
+      background-image: url('https://media.discordapp.net/attachments/1258866900629327935/1361963318214004756/Copia_de_Black_Yellow_Gold_Torn_Prayer_Worship_Twitter_Header.png?ex=6800aaaf&is=67ff592f&hm=2c0e1394c76449d4f39edc3bc77eb38e47958ae6e29ef04b4b2c128b3dca7539&=&format=webp&quality=lossless&width=982&height=552');
+      background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+      background-position: center; /* Centra la imagen de fondo */
+      background-attachment: fixed; /* Hace que la imagen se quede fija mientras se desplaza */
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+    }
+
+    /* Contenedor principal */
+    .container {
+      text-align: center;
+      background: rgba(44, 44, 44, 0.8); /* Fondo oscuro para que el contenido sea legible */
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #99f0e5; /* Azul base */
+    }
+
+    /* Formulario y elementos */
+    input[type="file"] {
+      background-color: #4e4e4e;
+      border: 2px solid #339fd1; /* Azul línea */
+      color: #fff;
+      padding: 1rem;
+      font-size: 1rem;
+      width: 80%;
+      margin-bottom: 1.5rem;
+      border-radius: 5px;
+    }
+
+    button[type="submit"] {
+      padding: 1rem 2rem;
+      background-color: #815ce3; /* Morado base */
+      border: none;
+      color: white;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #623094; /* Morado línea */
+    }
+
+    /* Mensaje de confirmación */
+    .result {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      word-wrap: break-word;
+      color: #ab8bff; /* Morado claro */
+    }
+
+    code {
+      background: #333;
+      padding: 0.3rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      display: inline-block;
+    }
+
+    a {
+      color: #815ce3; /* Morado base */
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Sube tu Skin para MorePlayerModels</h1>
+    <form action="https://catbox.moe/user/api.php" method="POST" enctype="multipart/form-data" target="_blank">
+      <input type="hidden" name="reqtype" value="fileupload">
+      <input type="file" name="fileToUpload" accept="image/png">
+      <br><br>
+      <button type="submit">Subir Skin</button>
+    </form>
+    <div class="result">
+      <p>✅ ¡Sube tu skin para obtener el enlace! Lo verás en Catbox.</p>
+    </div>
+  </div>
+
+</body>
+</html>
+
