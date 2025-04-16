@@ -61,6 +61,94 @@
         width: 100%;
         max-width: 400px;
     }
+    .zephy-dropdown {
+        position: fixed;
+        left: 50%;
+        bottom: 30px;
+        transform: translateX(-50%);
+        z-index: 1100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .zephy-btn {
+        background: #fff;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        cursor: pointer;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: box-shadow 0.2s;
+    }
+
+    .zephy-btn:hover,
+    .zephy-dropdown:hover .zephy-btn {
+       box-shadow: 0 6px 24px rgba(129, 92, 227, 0.25);
+    }
+
+    .zephy-logo {
+       width: 60px;
+       height: 60px;
+       object-fit: contain;
+       border-radius: 50%;
+    }
+
+    .zephy-dropdown-content {
+       display: none;
+       flex-direction: column;
+       align-items: center;
+       position: absolute;
+       bottom: 90px;
+       left: 50%;
+       transform: translateX(-50%);
+       background: rgba(40, 30, 60, 0.98);
+       border-radius: 16px;
+       box-shadow: 0 4px 24px rgba(50,50,100,0.18);
+       min-width: 160px;
+       padding: 10px 0;
+       animation: fadeIn 0.3s;
+    }
+
+    .zephy-dropdown:hover .zephy-dropdown-content,
+    .zephy-btn:focus + .zephy-dropdown-content,
+    .zephy-dropdown-content:hover {
+       display: flex;
+    }
+
+    .zephy-dropdown-content a {
+       color: #fff;
+       text-decoration: none;
+       padding: 12px 24px;
+       width: 100%;
+       text-align: center;
+       font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+       font-size: 1.1rem;
+       border-radius: 10px;
+       transition: background 0.2s, color 0.2s;
+    }
+
+    .zephy-dropdown-content a:hover {
+       background: #815ce3;
+       color: #99f0e5;
+    }
+
+    @keyframes fadeIn {
+       from { opacity: 0; transform: translateY(20px) translateX(-50%);}
+       to { opacity: 1; transform: translateY(0) translateX(-50%);}
+    }
+
+    @media (max-width: 600px) {
+       .zephy-btn { width: 60px; height: 60px; }
+       .zephy-logo { width: 40px; height: 40px; }
+       .zephy-dropdown-content { min-width: 120px; }
+       .zephy-dropdown-content a { font-size: 1rem; padding: 10px 10px; }
+    }
     .boton-enlace {
         min-width: 260px;
         padding: 22px 0;
@@ -145,6 +233,15 @@
 </style>
 </head>
 <body>
+    <div class="zephy-dropdown">
+  <button class="zephy-btn">
+    <img src="logo zephyhosting.png" alt="ZephyHosting" class="zephy-logo">
+  </button>
+  <div class="zephy-dropdown-content">
+    <a href="https://discord.gg/3424sNuaJb" target="_blank" rel="noopener noreferrer">Discord</a>
+    <a href="https://www.zephyhosting.com/" target="_blank" rel="noopener noreferrer">Página web</a>
+  </div>
+</div>
     <a href="https://ko-fi.com/mancostudios" target="_blank" rel="noopener noreferrer">
     <img src="https://img.icons8.com/?size=100&id=wWs0Mvy8dMp2&format=png&color=000000" alt="Apoya en Ko-fi" class="ko-fi-button">
     </a>
