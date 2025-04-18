@@ -60,28 +60,56 @@
       gap: 1.2rem;
     }
 
-    .boton {
-      padding: 1rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      color: white;
-      transition: background 0.3s, transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      width: 100%;
-    }
+  .boton {
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+.boton::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    transition: all 0.5s ease;
+    transform: scale(0);
+    border-radius: 50%;
+    pointer-events: none;
+  }
 
-    .boton:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2), 0 0 12px rgba(255, 255, 255, 0.1);
-      filter: brightness(1.1);
-    }
+  .boton:hover::before {
+    transform: scale(1);
+    opacity: 0.6;
+  }
 
-    .twitter { background: linear-gradient(90deg, var(--azul-linea), var(--azul-base)); }
-    .discord { background: linear-gradient(90deg, var(--morado-base), var(--morado-claro)); }
-    .skins   { background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea)); }
+  .boton:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.25), 0 0 20px rgba(255, 255, 255, 0.1);
+    filter: brightness(1.15);
+  }
+
+  .twitter {
+    background: linear-gradient(90deg, var(--azul-linea), var(--azul-base));
+  }
+
+  .discord {
+    background: linear-gradient(90deg, var(--morado-base), var(--morado-claro));
+  }
+
+  .skins {
+    background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
+  }
 
     .logo-fab {
       position: fixed;
