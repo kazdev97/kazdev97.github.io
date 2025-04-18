@@ -61,43 +61,65 @@
     }
 
   .boton {
-    padding: 1rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    color: white;
-    transition: all 0.4s ease-in-out;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-  }
+  position: relative;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 3px solid transparent;
+  border-radius: 14px;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
+  background-clip: padding-box;
+  transition: color 0.3s ease, background 0.3s ease, box-shadow 0.4s ease;
+  width: 100%;
+  z-index: 0;
+  overflow: visible;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Borde animado usando pseudo-elemento */
 .boton::before {
-    content: "";
-    position: absolute;
-    top: -100%;
-    left: -100%;
-    width: 300%;
-    height: 300%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    transition: all 0.5s ease;
-    transform: scale(0);
-    border-radius: 50%;
-    pointer-events: none;
-  }
+  content: '';
+  position: absolute;
+  top: -5px; bottom: -5px;
+  left: -5px; right: -5px;
+  border-radius: 18px;
+  background: linear-gradient(270deg, var(--azul-base), var(--morado-base), var(--azul-linea), var(--morado-claro));
+  background-size: 600% 600%;
+  animation: borderGlow 8s ease infinite;
+  z-index: -1;
+  filter: blur(6px);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
 
-  .boton:hover::before {
-    transform: scale(1);
-    opacity: 0.6;
-  }
+/* Al pasar el cursor, el borde se intensifica y cambia */
+.boton:hover::before {
+  opacity: 1;
+  filter: blur(8px);
+  animation-duration: 3s;
+}
 
-  .boton:hover {
-    transform: translateY(-6px) scale(1.05);
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.25), 0 0 20px rgba(255, 255, 255, 0.1);
-    filter: brightness(1.15);
+.boton:hover {
+  color: #fff;
+  background: linear-gradient(90deg, var(--morado-base), var(--azul-linea));
+  box-shadow: 0 0 20px var(--morado-claro), 0 0 40px var(--azul-base);
+  transform: scale(1.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
   }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
   .twitter {
     background: linear-gradient(90deg, var(--azul-linea), var(--azul-base));
