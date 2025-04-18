@@ -68,13 +68,15 @@
       border-radius: 14px;
       cursor: pointer;
       color: white;
-      transition: background 0.3s, transform 0.2s;
+      transition: background 0.3s, transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       width: 100%;
     }
 
     .boton:hover {
-      transform: translateY(-2px);
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2), 0 0 12px rgba(255, 255, 255, 0.1);
+      filter: brightness(1.1);
     }
 
     .twitter { background: linear-gradient(90deg, var(--azul-linea), var(--azul-base)); }
@@ -82,30 +84,29 @@
     .skins   { background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea)); }
 
     .logo-fab {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  cursor: pointer;
-  width: auto;
-  height: auto;
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  display: inline-block;
-}
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      cursor: pointer;
+      width: auto;
+      height: auto;
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      display: inline-block;
+    }
 
-.logo-fab:hover {
-  transform: scale(1.05);
-}
+    .logo-fab:hover {
+      transform: scale(1.05);
+    }
 
-.logo-fab img {
-  width: 48px; /* ajusta según lo grande que quieras el logo */
-  height: 48px;
-  object-fit: contain;
-  display: block;
-}
-
+    .logo-fab img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      display: block;
+    }
 
     .dropdown-content {
       display: none;
