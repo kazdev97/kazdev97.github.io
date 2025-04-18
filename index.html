@@ -80,32 +80,30 @@
     .twitter { background: linear-gradient(90deg, var(--azul-linea), var(--azul-base)); }
     .discord { background: linear-gradient(90deg, var(--morado-base), var(--morado-claro)); }
     .skins   { background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea)); }
+
     .logo-fab {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 64px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: transparent; /* fondo totalmente transparente */
-  backdrop-filter: blur(6px); /* efecto sutil de blur */
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25); /* sombra suave */
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: auto;
+  height: auto;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  display: inline-block;
 }
 
 .logo-fab:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 24px rgba(129, 92, 227, 0.3);
 }
 
 .logo-fab img {
-  width: 40px;
-  height: 40px;
+  width: 48px; /* ajusta según lo grande que quieras el logo */
+  height: 48px;
   object-fit: contain;
+  display: block;
 }
 
 
