@@ -1,255 +1,194 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<link rel="icon" type="image/png" href="logo.png" />
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MancoStudios</title>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <title>MancoStudios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
     :root {
-        --azul-base: #99f0e5;
-        --azul-linea: #339fd1;
-        --morado-base: #815ce3;
-        --morado-linea: #623094;
-        --morado-claro: #ab8bff;
+      --azul-base: #99f0e5;
+      --azul-linea: #339fd1;
+      --morado-base: #815ce3;
+      --morado-linea: #623094;
+      --morado-claro: #ab8bff;
+      --bg-dark: #15141b;
+      --glass-bg: rgba(255, 255, 255, 0.06);
     }
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
+
     body {
-        min-height: 100vh;
-        font-family: 'Poppins', 'Roboto', Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background:
-            linear-gradient(rgba(30,20,50,0.78), rgba(20,20,30,0.82)),
-            url('fondo.png') no-repeat center center fixed;
-        background-size: cover;
-        padding: 40px 20px;
-        text-align: center;
-        color: white;
-    }
-    header {
-        margin-bottom: 60px;
-        width: 100%;
-        max-width: 900px;
-    }
-    header h1 {
-        font-size: 2.4rem;
-        font-weight: 700;
-        line-height: 1.3;
-        background-color: rgba(0, 0, 0, 0.55); /* Fondo semitransparente */
-        padding: 20px 30px;
-        border-radius: 16px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-        color: #f0e9ff;
-        text-shadow:
-            2px 2px 6px rgba(0,0,0,0.85);
-        user-select: none;
-    }
-    .botones-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 32px;
-        width: 100%;
-        max-width: 400px;
-    }
-    .zephy-dropdown {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1100;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      font-family: 'Poppins', sans-serif;
+      background: url('fondo.png') center/cover no-repeat fixed;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background-color: var(--bg-dark);
     }
 
-    .zephy-btn {
-        background: transparent;
-        border: none;
-        border-radius: 50%;
-        padding: 0;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-        cursor: pointer;
-        width: 80px;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: box-shadow 0.2s;
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      text-align: center;
     }
 
-    .zephy-btn:hover,
-    .zephy-dropdown:hover .zephy-btn {
-       box-shadow: 0 6px 24px rgba(129, 92, 227, 0.25);
+    .glass-card h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #f0e9ff;
+      margin-bottom: 2rem;
     }
 
-    .zephy-logo {
-       width: 60px;
-       height: 60px;
-       object-fit: contain;
-       border-radius: 50%;
+    .botones {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
     }
 
-  .zephy-dropdown-content {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    bottom: 90px;
-    right: 0;
-    background: rgba(40, 30, 60, 0.98);
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(50,50,100,0.18);
-    min-width: 160px;
-    padding: 10px 0;
-    animation: fadeIn 0.3s;
-  }
-
-    .zephy-dropdown:hover .zephy-dropdown-content,
-    .zephy-btn:focus + .zephy-dropdown-content,
-    .zephy-dropdown-content:hover {
-       display: flex;
+    .boton {
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      width: 100%;
     }
 
-    .zephy-dropdown-content a {
-       color: #fff;
-       text-decoration: none;
-       padding: 12px 24px;
-       width: 100%;
-       text-align: center;
-       font-family: 'Poppins', 'Roboto', Arial, sans-serif;
-       font-size: 1.1rem;
-       border-radius: 10px;
-       transition: background 0.2s, color 0.2s;
+    .boton:hover {
+      transform: translateY(-2px);
     }
 
-    .zephy-dropdown-content a:hover {
-       background: #815ce3;
-       color: #99f0e5;
+    .twitter { background: linear-gradient(90deg, var(--azul-linea), var(--azul-base)); }
+    .discord { background: linear-gradient(90deg, var(--morado-base), var(--morado-claro)); }
+    .skins   { background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea)); }
+
+    .logo-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(20, 20, 30, 0.85);
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
     }
 
-    @keyframes fadeIn {
-       from { opacity: 0; transform: translateY(20px) translateX(-50%);}
-       to { opacity: 1; transform: translateY(0) translateX(-50%);}
+    .logo-fab:hover {
+      box-shadow: 0 6px 24px rgba(129, 92, 227, 0.3);
     }
 
-    @media (max-width: 600px) {
-       .zephy-btn { width: 60px; height: 60px; }
-       .zephy-logo { width: 40px; height: 40px; }
-       .zephy-dropdown-content { min-width: 120px; }
-       .zephy-dropdown-content a { font-size: 1rem; padding: 10px 10px; }
+    .logo-fab img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
     }
-    .boton-enlace {
-        min-width: 260px;
-        padding: 22px 0;
-        font-size: 1.3rem;
-        font-weight: 700;
-        border: none;
-        border-radius: 18px;
-        cursor: pointer;
-        transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s cubic-bezier(.4,2,.6,1), background 0.3s;
-        box-shadow: 0 4px 24px 0 rgba(50,50,100,0.13);
-        margin: 0 10px;
-        outline: none;
-        letter-spacing: 1px;
-        color: #fff;
-        position: relative;
-        overflow: hidden;
-        user-select: none;
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      background: #1e1b2c;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      flex-direction: column;
     }
-    .boton-twitter {
-        background: linear-gradient(90deg, var(--azul-linea), var(--azul-base));
+
+    .logo-fab:hover + .dropdown-content,
+    .dropdown-content:hover {
+      display: flex;
     }
-    .boton-discord {
-        background: linear-gradient(90deg, var(--morado-base), var(--morado-claro));
+
+    .dropdown-content a {
+      padding: 1rem;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      text-align: center;
+      transition: background 0.2s;
     }
-    .boton-skins {
-        background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
+
+    .dropdown-content a:hover {
+      background: var(--morado-base);
+      color: var(--azul-base);
     }
+
     .ko-fi-button {
-    position: fixed;
-    bottom: 20px; 
-    left: 20px;
-    width: 80px; 
-    z-index: 1000;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 64px;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
     }
 
     .ko-fi-button:hover {
-    opacity: 1;
+      opacity: 1;
     }
 
-    .boton-enlace::after {
-        content: '';
-        position: absolute;
-        left: -100%;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255,255,255,0.13);
-        transition: left 0.4s cubic-bezier(.4,2,.6,1);
-        z-index: 0;
+    @media (max-width: 480px) {
+      .glass-card h1 {
+        font-size: 1.4rem;
+      }
+      .boton {
+        font-size: 1rem;
+      }
     }
-    .boton-enlace:hover, .boton-enlace:focus {
-        transform: scale(1.06);
-        box-shadow: 0 8px 32px 0 rgba(50,50,100,0.18);
-    }
-    .boton-enlace:hover::after, .boton-enlace:focus::after {
-        left: 0;
-    }
-    @media (max-width: 600px) {
-        header h1 {
-            font-size: 1.5rem;
-            padding: 14px 18px;
-        }
-        .boton-enlace {
-            min-width: 180px;
-            font-size: 1rem;
-            padding: 16px 0;
-        }
-        .botones-container {
-            gap: 20px;
-        }
-    }
-</style>
+  </style>
 </head>
 <body>
-    <div class="zephy-dropdown">
-  <button class="zephy-btn">
-    <img src="logo zephyhosting.png" alt="ZephyHosting" class="zephy-logo">
-  </button>
-  <div class="zephy-dropdown-content">
-    <a href="https://discord.gg/3424sNuaJb" target="_blank" rel="noopener noreferrer">Discord</a>
-    <a href="https://www.zephyhosting.com/" target="_blank" rel="noopener noreferrer">Página web</a>
+
+  <div class="glass-card">
+    <h1>Eventos, series, mods, configuraciones y más</h1>
+    <div class="botones">
+      <a href="https://x.com/MancoStudios" target="_blank" rel="noopener noreferrer">
+        <button class="boton twitter">Twitter</button>
+      </a>
+      <a href="https://discord.gg/EmTarSHNsy" target="_blank" rel="noopener noreferrer">
+        <button class="boton discord">Discord</button>
+      </a>
+      <a href="/skins">
+        <button class="boton skins">Skins</button>
+      </a>
+    </div>
   </div>
-</div>
-    <a href="https://ko-fi.com/mancostudios" target="_blank" rel="noopener noreferrer">
-    <img src="https://img.icons8.com/?size=100&id=wWs0Mvy8dMp2&format=png&color=000000" alt="Apoya en Ko-fi" class="ko-fi-button">
-    </a>
-    <header>
-        <h1>Eventos, series, mods, configuraciones, playmakers, y más</h1>
-    </header>
-    <main>
-        <div class="botones-container">
-            <a href="https://x.com/MancoStudios" target="_blank" rel="noopener noreferrer">
-                <button class="boton-enlace boton-twitter">Twitter</button>
-            </a>
-            <a href="https://discord.gg/EmTarSHNsy" target="_blank" rel="noopener noreferrer">
-                <button class="boton-enlace boton-discord">Discord</button>
-            </a>
-            <a href="/skins">
-                <button class="boton-enlace boton-skins">Skins</button>
-            </a>
-        </div>
-    </main>
+
+  <a href="https://ko-fi.com/mancostudios" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.icons8.com/?size=100&id=wWs0Mvy8dMp2&format=png&color=000000" alt="Ko-fi" class="ko-fi-button" />
+  </a>
+
+  <div class="logo-fab">
+    <img src="logo zephyhosting.png" alt="ZephyHosting" />
+  </div>
+  <div class="dropdown-content">
+    <a href="https://discord.gg/3424sNuaJb" target="_blank">Discord</a>
+    <a href="https://www.zephyhosting.com/" target="_blank">Página web</a>
+  </div>
+
 </body>
 </html>
