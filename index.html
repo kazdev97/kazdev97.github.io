@@ -14,7 +14,7 @@
       --morado-linea: #623094;
       --morado-claro: #ab8bff;
       --bg-dark: #15141b;
-      --glass-bg: rgba(255, 255, 255, 0.06);
+      --glass-bg: rgba(255, 255, 255, 0.04);
     }
 
     *, *::before, *::after {
@@ -25,7 +25,7 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: url('fondo.png') center/cover no-repeat fixed;
+      background: url('fondo.png') center/cover no-repeat fixed, var(--bg-dark);
       color: white;
       min-height: 100vh;
       display: flex;
@@ -33,174 +33,178 @@
       align-items: center;
       justify-content: center;
       padding: 2rem;
-      background-color: var(--bg-dark);
     }
 
-    /* Contenedor para la imagen y el card para mejor control */
     .container {
+      max-width: 450px;
       width: 100%;
-      max-width: 600px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 2.5rem;
     }
 
-    /* Imagen centrada arriba */
     .top-image {
-      max-width: 200px; /* Ajusta tamaño si quieres */
+      max-width: 140px;
       width: 100%;
       height: auto;
-      margin-bottom: 1.5rem; /* Espacio entre imagen y card */
+      margin-bottom: 0.5rem;
+      opacity: 0.92;
+      transition: opacity 0.3s;
+    }
+    .top-image:hover {
+      opacity: 1;
     }
 
     .glass-card {
       background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
-      padding: 2rem 1.5rem; /* Un poco menos padding para ajustar */
-      max-width: 500px; /* Reducido de 600px a 500px */
-      width: 100%;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      border-radius: 18px;
+      padding: 2rem 1.2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
       text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .glass-card h1 {
-      font-size: 1.9rem;
-      font-weight: 700;
+      font-size: 1.4rem;
+      font-weight: 600;
       color: #f0e9ff;
-      margin-bottom: 2rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.01em;
     }
 
     .botones {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1rem;
+      margin-top: 0.5rem;
     }
 
     .boton {
-      position: relative;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border: 3px solid transparent;
-      border-radius: 14px;
-      cursor: pointer;
-      color: white;
-      background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
-      background-clip: padding-box;
-      transition: color 0.3s ease, background 0.3s ease, box-shadow 0.4s ease;
+      background: transparent;
+      border: 1.8px solid var(--morado-claro);
+      color: var(--morado-claro);
+      font-size: 1.07rem;
+      font-weight: 500;
+      border-radius: 12px;
+      padding: 0.85rem 0;
       width: 100%;
-      z-index: 0;
-      overflow: visible;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: 
+        background 0.25s cubic-bezier(.4,0,.2,1),
+        color 0.25s cubic-bezier(.4,0,.2,1),
+        border-color 0.25s cubic-bezier(.4,0,.2,1),
+        box-shadow 0.3s;
+      box-shadow: none;
+      outline: none;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Borde animado usando pseudo-elemento */
-    .boton::before {
-      content: '';
-      position: absolute;
-      top: -5px; bottom: -5px;
-      left: -5px; right: -5px;
-      border-radius: 18px;
-      background: linear-gradient(270deg, var(--azul-base), var(--morado-base), var(--azul-linea), var(--morado-claro));
-      background-size: 600% 600%;
-      animation: borderGlow 8s ease infinite;
-      z-index: -1;
-      filter: blur(6px);
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    /* Al pasar el cursor, el borde se intensifica y cambia */
-    .boton:hover::before {
-      opacity: 1;
-      filter: blur(8px);
-      animation-duration: 3s;
-    }
-
-    .boton:hover {
+    .boton:hover, .boton:focus {
+      background: linear-gradient(90deg, var(--azul-base) 0%, var(--morado-base) 100%);
       color: #fff;
-      background: linear-gradient(90deg, var(--morado-base), var(--azul-linea));
-      box-shadow: 0 0 20px var(--morado-claro), 0 0 40px var(--azul-base);
-      transform: scale(1.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-color: var(--azul-linea);
+      box-shadow: 0 2px 16px 0 rgba(129,92,227,0.10);
     }
 
-    @keyframes borderGlow {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+    .boton:active {
+      background: var(--morado-linea);
+      color: #fff;
+      border-color: var(--morado-base);
     }
 
+    /* Variantes de color para cada botón */
     .twitter {
-      background: linear-gradient(90deg, var(--azul-linea), var(--azul-base));
+      border-color: var(--azul-linea);
+      color: var(--azul-linea);
     }
-
+    .twitter:hover {
+      background: linear-gradient(90deg, var(--azul-base), var(--azul-linea));
+      color: #fff;
+      border-color: var(--azul-base);
+    }
     .discord {
+      border-color: var(--morado-base);
+      color: var(--morado-base);
+    }
+    .discord:hover {
       background: linear-gradient(90deg, var(--morado-base), var(--morado-claro));
+      color: #fff;
+      border-color: var(--morado-claro);
     }
-
     .skins {
+      border-color: var(--morado-claro);
+      color: var(--morado-claro);
+    }
+    .skins:hover {
       background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
+      color: #fff;
+      border-color: var(--azul-linea);
     }
 
+    a {
+      text-decoration: none;
+      width: 100%;
+    }
+
+    /* Floating action button minimalista */
     .logo-fab {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 24px;
+      right: 24px;
       cursor: pointer;
-      width: auto;
-      height: auto;
-      background: none;
-      border: none;
-      box-shadow: none;
-      padding: 0;
-      display: inline-block;
+      background: rgba(21,20,27,0.85);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 0.2rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+      z-index: 10;
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-
     .logo-fab:hover {
-      transform: scale(1.05);
+      box-shadow: 0 4px 24px rgba(129,92,227,0.13);
+      transform: scale(1.04);
     }
-
     .logo-fab img {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       object-fit: contain;
       display: block;
     }
 
+    /* Dropdown minimalista */
     .dropdown-content {
       display: none;
       position: absolute;
-      bottom: 80px;
+      bottom: 70px;
       right: 0;
-      background: #1e1b2c;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      background: rgba(30,27,44,0.98);
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
       flex-direction: column;
+      min-width: 160px;
+      z-index: 20;
+      border: 1px solid rgba(255,255,255,0.07);
     }
-
+    .logo-fab:focus + .dropdown-content,
     .logo-fab:hover + .dropdown-content,
     .dropdown-content:hover {
       display: flex;
     }
-
     .dropdown-content a {
-      padding: 1rem;
+      padding: 0.9rem 1.2rem;
       color: #fff;
-      text-decoration: none;
       font-size: 1rem;
-      text-align: center;
-      transition: background 0.2s;
+      text-align: left;
+      background: none;
+      border: none;
+      transition: background 0.18s, color 0.18s;
     }
-
     .dropdown-content a:hover {
       background: var(--morado-base);
       color: var(--azul-base);
@@ -208,31 +212,35 @@
 
     .ko-fi-button {
       position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 64px;
-      opacity: 0.8;
-      transition: opacity 0.3s ease;
+      bottom: 24px;
+      left: 24px;
+      width: 48px;
+      opacity: 0.82;
+      filter: grayscale(0.2);
+      transition: opacity 0.2s, filter 0.2s;
     }
-
     .ko-fi-button:hover {
       opacity: 1;
+      filter: grayscale(0);
     }
 
     @media (max-width: 480px) {
-      .glass-card h1 {
-        font-size: 1.4rem;
-      }
-      .boton {
-        font-size: 1rem;
+      .container {
+        max-width: 98vw;
+        gap: 1.2rem;
       }
       .top-image {
-        max-width: 150px;
-        margin-bottom: 1rem;
+        max-width: 100px;
       }
       .glass-card {
-        max-width: 90%;
-        padding: 1.5rem 1rem;
+        padding: 1.2rem 0.6rem;
+      }
+      .glass-card h1 {
+        font-size: 1.1rem;
+      }
+      .boton {
+        font-size: 0.97rem;
+        padding: 0.7rem 0;
       }
     }
   </style>
@@ -240,7 +248,6 @@
 <body>
 
   <div class="container">
-    <!-- Imagen centrada arriba -->
     <img src="textoms.png" alt="Texto MS" class="top-image" />
 
     <div class="glass-card">
@@ -263,7 +270,7 @@
     <img src="https://img.icons8.com/?size=100&id=wWs0Mvy8dMp2&format=png&color=000000" alt="Ko-fi" class="ko-fi-button" />
   </a>
 
-  <div class="logo-fab">
+  <div tabindex="0" class="logo-fab">
     <img src="logo zephyhosting.png" alt="ZephyHosting" />
   </div>
   <div class="dropdown-content">
@@ -273,3 +280,4 @@
 
 </body>
 </html>
+
