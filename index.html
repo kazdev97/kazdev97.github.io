@@ -36,12 +36,29 @@
       background-color: var(--bg-dark);
     }
 
+    /* Contenedor para la imagen y el card para mejor control */
+    .container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Imagen centrada arriba */
+    .top-image {
+      max-width: 200px; /* Ajusta tamaño si quieres */
+      width: 100%;
+      height: auto;
+      margin-bottom: 1.5rem; /* Espacio entre imagen y card */
+    }
+
     .glass-card {
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
       border-radius: 20px;
-      padding: 2.5rem 2rem;
-      max-width: 600px;
+      padding: 2rem 1.5rem; /* Un poco menos padding para ajustar */
+      max-width: 500px; /* Reducido de 600px a 500px */
       width: 100%;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
       text-align: center;
@@ -60,78 +77,78 @@
       gap: 1.2rem;
     }
 
-  .boton {
-  position: relative;
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: 3px solid transparent;
-  border-radius: 14px;
-  cursor: pointer;
-  color: white;
-  background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
-  background-clip: padding-box;
-  transition: color 0.3s ease, background 0.3s ease, box-shadow 0.4s ease;
-  width: 100%;
-  z-index: 0;
-  overflow: visible;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+    .boton {
+      position: relative;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: 3px solid transparent;
+      border-radius: 14px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
+      background-clip: padding-box;
+      transition: color 0.3s ease, background 0.3s ease, box-shadow 0.4s ease;
+      width: 100%;
+      z-index: 0;
+      overflow: visible;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
 
-/* Borde animado usando pseudo-elemento */
-.boton::before {
-  content: '';
-  position: absolute;
-  top: -5px; bottom: -5px;
-  left: -5px; right: -5px;
-  border-radius: 18px;
-  background: linear-gradient(270deg, var(--azul-base), var(--morado-base), var(--azul-linea), var(--morado-claro));
-  background-size: 600% 600%;
-  animation: borderGlow 8s ease infinite;
-  z-index: -1;
-  filter: blur(6px);
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
+    /* Borde animado usando pseudo-elemento */
+    .boton::before {
+      content: '';
+      position: absolute;
+      top: -5px; bottom: -5px;
+      left: -5px; right: -5px;
+      border-radius: 18px;
+      background: linear-gradient(270deg, var(--azul-base), var(--morado-base), var(--azul-linea), var(--morado-claro));
+      background-size: 600% 600%;
+      animation: borderGlow 8s ease infinite;
+      z-index: -1;
+      filter: blur(6px);
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
 
-/* Al pasar el cursor, el borde se intensifica y cambia */
-.boton:hover::before {
-  opacity: 1;
-  filter: blur(8px);
-  animation-duration: 3s;
-}
+    /* Al pasar el cursor, el borde se intensifica y cambia */
+    .boton:hover::before {
+      opacity: 1;
+      filter: blur(8px);
+      animation-duration: 3s;
+    }
 
-.boton:hover {
-  color: #fff;
-  background: linear-gradient(90deg, var(--morado-base), var(--azul-linea));
-  box-shadow: 0 0 20px var(--morado-claro), 0 0 40px var(--azul-base);
-  transform: scale(1.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .boton:hover {
+      color: #fff;
+      background: linear-gradient(90deg, var(--morado-base), var(--azul-linea));
+      box-shadow: 0 0 20px var(--morado-claro), 0 0 40px var(--azul-base);
+      transform: scale(1.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-@keyframes borderGlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+    @keyframes borderGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-  .twitter {
-    background: linear-gradient(90deg, var(--azul-linea), var(--azul-base));
-  }
+    .twitter {
+      background: linear-gradient(90deg, var(--azul-linea), var(--azul-base));
+    }
 
-  .discord {
-    background: linear-gradient(90deg, var(--morado-base), var(--morado-claro));
-  }
+    .discord {
+      background: linear-gradient(90deg, var(--morado-base), var(--morado-claro));
+    }
 
-  .skins {
-    background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
-  }
+    .skins {
+      background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
+    }
 
     .logo-fab {
       position: fixed;
@@ -209,23 +226,36 @@
       .boton {
         font-size: 1rem;
       }
+      .top-image {
+        max-width: 150px;
+        margin-bottom: 1rem;
+      }
+      .glass-card {
+        max-width: 90%;
+        padding: 1.5rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="glass-card">
-    <h1>Eventos, series, mods, configuraciones y más</h1>
-    <div class="botones">
-      <a href="https://x.com/MancoStudios" target="_blank" rel="noopener noreferrer">
-        <button class="boton twitter">Twitter</button>
-      </a>
-      <a href="https://discord.gg/EmTarSHNsy" target="_blank" rel="noopener noreferrer">
-        <button class="boton discord">Discord</button>
-      </a>
-      <a href="/skins">
-        <button class="boton skins">Skins</button>
-      </a>
+  <div class="container">
+    <!-- Imagen centrada arriba -->
+    <img src="textoms.png" alt="Texto MS" class="top-image" />
+
+    <div class="glass-card">
+      <h1>Eventos, series, mods, configuraciones y más</h1>
+      <div class="botones">
+        <a href="https://x.com/MancoStudios" target="_blank" rel="noopener noreferrer">
+          <button class="boton twitter">Twitter</button>
+        </a>
+        <a href="https://discord.gg/EmTarSHNsy" target="_blank" rel="noopener noreferrer">
+          <button class="boton discord">Discord</button>
+        </a>
+        <a href="/skins">
+          <button class="boton skins">Skins</button>
+        </a>
+      </div>
     </div>
   </div>
 
