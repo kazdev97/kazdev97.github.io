@@ -161,45 +161,76 @@
       display: block;
     }
     .eventos {
-  border-color: #ff9f9f;
-  color: #ff9f9f;
-}
-.eventos:hover {
-  background: linear-gradient(90deg, #ffbcbc, #ff7070);
-  color: #fff;
-  border-color: #ff9f9f;
-}
+      border-color: #ff9f9f;
+      color: #ff9f9f;
+    }
+    .eventos:hover {
+      background: linear-gradient(90deg, #ffbcbc, #ff7070);
+      color: #fff;
+      border-color: #ff9f9f;
+    }
 
-.playmakers {
-  border-color: #ffe16b;
-  color: #ffe16b;
-}
-.playmakers:hover {
-  background: linear-gradient(90deg, #fff391, #ffce00);
-  color: #15141b;
-  border-color: #ffe16b;
-}
+    .playmakers {
+      border-color: #ffe16b;
+      color: #ffe16b;
+    }
+    .playmakers:hover {
+      background: linear-gradient(90deg, #fff391, #ffce00);
+      color: #15141b;
+      border-color: #ffe16b;
+    }
 
-.construcciones {
-  border-color: #71e38f;
-  color: #71e38f;
-}
-.construcciones:hover {
-  background: linear-gradient(90deg, #9fffc1, #42c478);
-  color: #15141b;
-  border-color: #71e38f;
-}
+    .construcciones {
+      border-color: #71e38f;
+      color: #71e38f;
+    }
+    .construcciones:hover {
+      background: linear-gradient(90deg, #9fffc1, #42c478);
+      color: #15141b;
+      border-color: #71e38f;
+    }
 
-.portafolio {
-  border-color: #84a7ff;
-  color: #84a7ff;
-}
-.portafolio:hover {
-  background: linear-gradient(90deg, #c2d3ff, #5f83ff);
-  color: #15141b;
-  border-color: #84a7ff;
-}
-
+    .portafolio {
+      border-color: #84a7ff;
+      color: #84a7ff;
+    }
+    .portafolio:hover {
+      background: linear-gradient(90deg, #c2d3ff, #5f83ff);
+      color: #15141b;
+      border-color: #84a7ff;
+    }
+ /* Dropdown minimalista */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      background: rgba(30,27,44,0.98);
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+      flex-direction: column;
+      min-width: 160px;
+      z-index: 20;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .logo-fab:focus + .dropdown-content,
+    .logo-fab:hover + .dropdown-content,
+    .dropdown-content:hover {
+      display: flex;
+    }
+    .dropdown-content a {
+      padding: 0.9rem 1.2rem;
+      color: #fff;
+      font-size: 1rem;
+      text-align: left;
+      background: none;
+      border: none;
+      transition: background 0.18s, color 0.18s;
+    }
+    .dropdown-content a:hover {
+      background: var(--morado-base);
+      color: var(--azul-base);
+    }
     .ko-fi-button {
       position: fixed;
       bottom: 24px;
@@ -232,35 +263,6 @@
         font-size: 0.97rem;
         padding: 0.7rem 0;
       }
-     .social-buttons {
-        display: fixed;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-      }
-
-     .social-button {
-        display: inline-block;
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
-        overflow: hidden;
-        background-color: #ffffff;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .social-button img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        padding: 4px;
-      }
-
-      .social-button:hover {
-        transform: scale(1.1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      }
     }
   </style>
 </head>
@@ -273,17 +275,6 @@
       <h1>"Manco de nombre, pro en desarrollo."</h1>
       <div class="botones">
         <div class="dropdown">
-  <button class="dropdown-button">Contacto</button>
-<div class="social-buttons">
-  <a href="https://discord.gg/tulink" target="_blank" class="social-button">
-    <img src="https://static.vecteezy.com/system/resources/previews/023/986/667/non_2x/discord-logo-discord-logo-transparent-discord-icon-transparent-free-free-png.png" alt="Discord" />
-  </a>
-  <a href="https://twitter.com/tuusuario" target="_blank" class="social-button">
-    <img src="https://images.icon-icons.com/4029/PNG/512/twitter_x_new_logo_x_rounded_icon_256078.png" alt="X" />
-  </a>
-</div>
-
-
         </a>
         <a href="/skins">
           <button class="boton skins">Skins</button>
