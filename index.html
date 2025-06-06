@@ -118,25 +118,6 @@
       border-color: var(--morado-base);
     }
 
-    /* Variantes de color para cada botón */
-    .twitter {
-      border-color: var(--azul-linea);
-      color: var(--azul-linea);
-    }
-    .twitter:hover {
-      background: linear-gradient(90deg, var(--azul-base), var(--azul-linea));
-      color: #fff;
-      border-color: var(--azul-base);
-    }
-    .discord {
-      border-color: var(--morado-base);
-      color: var(--morado-base);
-    }
-    .discord:hover {
-      background: linear-gradient(90deg, var(--morado-base), var(--morado-claro));
-      color: #fff;
-      border-color: var(--morado-claro);
-    }
     .skins {
       border-color: var(--morado-claro);
       color: var(--morado-claro);
@@ -178,39 +159,6 @@
       height: 44px;
       object-fit: contain;
       display: block;
-    }
-
-    /* Dropdown minimalista */
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      bottom: 70px;
-      right: 0;
-      background: rgba(30,27,44,0.98);
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-      flex-direction: column;
-      min-width: 160px;
-      z-index: 20;
-      border: 1px solid rgba(255,255,255,0.07);
-    }
-    .logo-fab:focus + .dropdown-content,
-    .logo-fab:hover + .dropdown-content,
-    .dropdown-content:hover {
-      display: flex;
-    }
-    .dropdown-content a {
-      padding: 0.9rem 1.2rem;
-      color: #fff;
-      font-size: 1rem;
-      text-align: left;
-      background: none;
-      border: none;
-      transition: background 0.18s, color 0.18s;
-    }
-    .dropdown-content a:hover {
-      background: var(--morado-base);
-      color: var(--azul-base);
     }
     .eventos {
   border-color: #ff9f9f;
@@ -284,71 +232,38 @@
         font-size: 0.97rem;
         padding: 0.7rem 0;
       }
-      .dropdown {
-  position: relative;
-  display: inline-block;
-}
+     .social-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+      }
 
-.dropdown-button {
-  background-color: #4f46e5;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+     .social-button {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        overflow: hidden;
+        background-color: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-.dropdown-button:hover {
-  background-color: #4338ca;
-}
+      .social-button img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 5px;
+      }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  z-index: 1;
-  margin-top: 10px;
-  overflow: hidden;
-}
-
-.dropdown-content a {
-  color: #333;
-  padding: 10px 16px;
-  text-decoration: none;
-  display: block;
-  transition: background-color 0.2s ease;
-}
-
-.dropdown-content a:hover {
-  background-color: #f0f0f0;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
+      .social-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+      }
     }
   </style>
 </head>
-  <script>
-  const btn = document.getElementById("contactBtn");
-  const menu = document.getElementById("contactMenu");
-
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-
-  window.addEventListener("click", (e) => {
-    if (!btn.contains(e.target) && !menu.contains(e.target)) {
-      menu.classList.add("hidden");
-    }
-  });
-</script>
 <body>
 
   <div class="container">
@@ -359,11 +274,15 @@
       <div class="botones">
         <div class="dropdown">
   <button class="dropdown-button">Contacto</button>
-  <div class="dropdown-content">
-    <a href="https://discord.gg/tulink" target="_blank">Discord</a>
-    <a href="https://twitter.com/tuusuario" target="_blank">X (Twitter)</a>
-  </div>
+<div class="social-buttons">
+  <a href="https://discord.gg/tulink" target="_blank" class="social-button">
+    <img src="https://static.vecteezy.com/system/resources/previews/023/986/667/non_2x/discord-logo-discord-logo-transparent-discord-icon-transparent-free-free-png.png" alt="Discord" />
+  </a>
+  <a href="https://twitter.com/tuusuario" target="_blank" class="social-button">
+    <img src="https://images.icon-icons.com/4029/PNG/512/twitter_x_new_logo_x_rounded_icon_256078.png" alt="X" />
+  </a>
 </div>
+
 
         </a>
         <a href="/skins">
