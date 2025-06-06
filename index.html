@@ -295,11 +295,38 @@
     <div class="glass-card">
       <h1>"Manco de nombre, pro en desarrollo."</h1>
       <div class="botones">
-        <a href="https://x.com/MancoStudios" target="_blank" rel="noopener noreferrer">
-          <button class="boton twitter">Twitter</button>
-        </a>
-        <a href="https://discord.gg/EmTarSHNsy" target="_blank" rel="noopener noreferrer">
-          <button class="boton discord">Discord</button>
+        <div class="relative inline-block text-left">
+  <button id="contactBtn" class="bg-indigo-600 text-white px-4 py-2 rounded-xl shadow hover:bg-indigo-700 transition">
+    Contacto
+  </button>
+
+  <div id="contactMenu" class="hidden absolute z-10 mt-2 w-40 origin-top-right rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+    <div class="py-1">
+      <a href="https://discord.gg/TUENLACE" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+        Discord
+      </a>
+      <a href="https://twitter.com/TUCUENTA" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+        X (Twitter)
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById("contactBtn");
+  const menu = document.getElementById("contactMenu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+
+  window.addEventListener("click", (e) => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.add("hidden");
+    }
+  });
+</script>
+
         </a>
         <a href="/skins">
           <button class="boton skins">Skins</button>
