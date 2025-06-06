@@ -284,6 +284,54 @@
         font-size: 0.97rem;
         padding: 0.7rem 0;
       }
+      .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: #4f46e5;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-button:hover {
+  background-color: #4338ca;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 1;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
     }
   </style>
 </head>
@@ -295,22 +343,14 @@
     <div class="glass-card">
       <h1>"Manco de nombre, pro en desarrollo."</h1>
       <div class="botones">
-        <div class="relative inline-block text-left">
-  <button id="contactBtn" class="bg-indigo-600 text-white px-4 py-2 rounded-xl shadow hover:bg-indigo-700 transition">
-    Contacto
-  </button>
-
-  <div id="contactMenu" class="hidden absolute z-10 mt-2 w-40 origin-top-right rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-    <div class="py-1">
-      <a href="https://discord.gg/TUENLACE" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-        Discord
-      </a>
-      <a href="https://twitter.com/TUCUENTA" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-        X (Twitter)
-      </a>
-    </div>
+        <div class="dropdown">
+  <button class="dropdown-button">Contacto</button>
+  <div class="dropdown-content">
+    <a href="https://discord.gg/tulink" target="_blank">Discord</a>
+    <a href="https://twitter.com/tuusuario" target="_blank">X (Twitter)</a>
   </div>
 </div>
+
         </a>
         <a href="/skins">
           <button class="boton skins">Skins</button>
@@ -334,20 +374,6 @@
   <a href="https://ko-fi.com/mancostudios" target="_blank" rel="noopener noreferrer">
     <img src="https://img.icons8.com/?size=100&id=wWs0Mvy8dMp2&format=png&color=000000" alt="Ko-fi" class="ko-fi-button" />
   </a>
-<script>
-  const btn = document.getElementById("contactBtn");
-  const menu = document.getElementById("contactMenu");
-
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-
-  window.addEventListener("click", (e) => {
-    if (!btn.contains(e.target) && !menu.contains(e.target)) {
-      menu.classList.add("hidden");
-    }
-  });
-</script>
 </body>
 </html>
 
