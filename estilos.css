@@ -1,0 +1,252 @@
+    :root {
+      --azul-base: #99f0e5;
+      --azul-linea: #339fd1;
+      --morado-base: #815ce3;
+      --morado-linea: #623094;
+      --morado-claro: #ab8bff;
+      --bg-dark: #15141b;
+      --glass-bg: rgba(255, 255, 255, 0.04);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('fondo.png') center/cover no-repeat fixed, var(--bg-dark);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 550px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .top-image {
+      max-width: 140px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 0.5rem;
+      opacity: 0.92;
+      transition: opacity 0.3s;
+      cursor: default;
+    }
+    .top-image:hover {
+      opacity: 1;
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      min-height: 300px;
+      width: 100%;
+      border-radius: 18px;
+      padding: 2rem 1.2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .glass-card h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #f0e9ff;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.01em;
+    }
+
+    .botones {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .boton {
+      background: transparent;
+      border: 1.8px solid var(--morado-claro);
+      color: var(--morado-claro);
+      font-size: 1.07rem;
+      font-weight: 500;
+      border-radius: 12px;
+      padding: 0.85rem 0;
+      width: 100%;
+      cursor: pointer;
+      transition: 
+        background 0.25s cubic-bezier(.4,0,.2,1),
+        color 0.25s cubic-bezier(.4,0,.2,1),
+        border-color 0.25s cubic-bezier(.4,0,.2,1),
+        box-shadow 0.3s;
+      box-shadow: none;
+      outline: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .boton:hover, .boton:focus {
+      background: linear-gradient(90deg, var(--azul-base) 0%, var(--morado-base) 100%);
+      color: #fff;
+      border-color: var(--azul-linea);
+      box-shadow: 0 2px 16px 0 rgba(129,92,227,0.10);
+    }
+
+    .boton:active {
+      background: var(--morado-linea);
+      color: #fff;
+      border-color: var(--morado-base);
+    }
+
+    /* Botones */
+    .skins {
+      border-color: var(--morado-claro);
+      color: var(--morado-claro);
+    }
+    .skins:hover {
+      background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
+      color: #fff;
+      border-color: var(--azul-linea);
+    }
+
+    .eventos {
+      border-color: #ff9f9f;
+      color: #ff9f9f;
+    }
+    .eventos:hover {
+      background: linear-gradient(90deg, #ffbcbc, #ff7070);
+      color: #fff;
+      border-color: #ff9f9f;
+    }
+
+    .playmakers {
+      border-color: #ffe16b;
+      color: #ffe16b;
+    }
+    .playmakers:hover {
+      background: linear-gradient(90deg, #fff391, #ffce00);
+      color: #15141b;
+      border-color: #ffe16b;
+    }
+
+    .construcciones {
+      border-color: #71e38f;
+      color: #71e38f;
+    }
+    .construcciones:hover {
+      background: linear-gradient(90deg, #9fffc1, #42c478);
+      color: #15141b;
+      border-color: #71e38f;
+    }
+
+    .portafolio {
+      border-color: #84a7ff;
+      color: #84a7ff;
+    }
+    .portafolio:hover {
+      background: linear-gradient(90deg, #c2d3ff, #5f83ff);
+      color: #15141b;
+      border-color: #84a7ff;
+    }
+
+    a {
+      text-decoration: none;
+      width: 100%;
+      display: block;
+    }
+
+    /* Botón Ko-fi  */
+    .ko-fi-button {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 48px;
+      opacity: 0.82;
+      filter: grayscale(0.2);
+      transition: opacity 0.2s, filter 0.2s;
+      z-index: 15;
+    }
+    .ko-fi-button:hover {
+      opacity: 1;
+      filter: grayscale(0);
+    }
+
+    /* Contenedor botones X y Discord (esquina inferior derecha) */
+    .social-buttons {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      gap: 12px;
+      z-index: 15;
+    }
+
+    .social-button {
+      width: 48px;
+      height: 48px;
+      background: rgba(21,20,27,0.85);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+    }
+    .social-button:hover {
+      box-shadow: 0 4px 24px rgba(129,92,227,0.13);
+      transform: scale(1.1);
+      background: linear-gradient(90deg, var(--azul-base), var(--morado-base));
+      border-color: var(--azul-linea);
+    }
+    .social-button img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    @media (max-width: 480px) {
+      .container {
+        max-width: 98vw;
+        gap: 1.2rem;
+      }
+      .top-image {
+        max-width: 100px;
+      }
+      .glass-card {
+        padding: 1.2rem 0.6rem;
+      }
+      .glass-card h1 {
+        font-size: 1.1rem;
+      }
+      .boton {
+        font-size: 0.97rem;
+        padding: 0.7rem 0;
+      }
+      .social-button, .ko-fi-button {
+        width: 40px;
+        height: 40px;
+      }
+      .social-button img {
+        width: 20px;
+        height: 20px;
+      }
+      .ko-fi-button {
+        width: 40px;
+      }
+    }
