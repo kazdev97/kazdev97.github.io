@@ -1,297 +1,964 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="logo.png" type="image/png" />
-  <title>MancoStudios</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --azul-base: #99f0e5;
-      --azul-linea: #339fd1;
-      --morado-base: #815ce3;
-      --morado-linea: #623094;
-      --morado-claro: #ab8bff;
-      --bg-dark: #15141b;
-      --glass-bg: rgba(255, 255, 255, 0.04);
-    }
+    <meta charset="utf-8">
+    <title>MancoStudios</title>
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: url('fondo.png') center/cover no-repeat fixed, var(--bg-dark);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #eee;
+            scroll-behavior: smooth;
+        }
 
-    .container {
-      max-width: 550px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.5rem;
-    }
+        a {
+            color: #97efe4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-    .top-image {
-      max-width: 140px;
-      width: 100%;
-      height: auto;
-      margin-bottom: 0.5rem;
-      opacity: 0.92;
-      transition: opacity 0.3s;
-      cursor: default;
-    }
-    .top-image:hover {
-      opacity: 1;
-    }
+        a:hover {
+            color: #825de5;
+        }
 
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(8px);
-      min-height: 300px;
-      width: 100%;
-      border-radius: 18px;
-      padding: 2rem 1.2rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
+        /* Contenedor general */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .glass-card h1 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #f0e9ff;
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.01em;
-    }
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #121212cc;
+            backdrop-filter: saturate(180%) blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+        }
 
-    .botones {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
+        nav .brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: #825de5;
+            cursor: pointer;
+            user-select: none;
+        }
 
-    .boton {
-      background: transparent;
-      border: 1.8px solid var(--morado-claro);
-      color: var(--morado-claro);
-      font-size: 1.07rem;
-      font-weight: 500;
-      border-radius: 12px;
-      padding: 0.85rem 0;
-      width: 100%;
-      cursor: pointer;
-      transition: 
-        background 0.25s cubic-bezier(.4,0,.2,1),
-        color 0.25s cubic-bezier(.4,0,.2,1),
-        border-color 0.25s cubic-bezier(.4,0,.2,1),
-        box-shadow 0.3s;
-      box-shadow: none;
-      outline: none;
-      position: relative;
-      overflow: hidden;
-    }
+        nav .brand span {
+            color: #97efe4;
+        }
 
-    .boton:hover, .boton:focus {
-      background: linear-gradient(90deg, var(--azul-base) 0%, var(--morado-base) 100%);
-      color: #fff;
-      border-color: var(--azul-linea);
-      box-shadow: 0 2px 16px 0 rgba(129,92,227,0.10);
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+        }
 
-    .boton:active {
-      background: var(--morado-linea);
-      color: #fff;
-      border-color: var(--morado-base);
-    }
+        nav ul li a {
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            color: #eee;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-    /* Botones con colores específicos */
-    .skins {
-      border-color: var(--morado-claro);
-      color: var(--morado-claro);
-    }
-    .skins:hover {
-      background: linear-gradient(90deg, var(--morado-claro), var(--azul-linea));
-      color: #fff;
-      border-color: var(--azul-linea);
-    }
+        nav ul li a.active,
+        nav ul li a:hover {
+            background-color: #825de5;
+            color: #fff;
+        }
 
-    .eventos {
-      border-color: #ff9f9f;
-      color: #ff9f9f;
-    }
-    .eventos:hover {
-      background: linear-gradient(90deg, #ffbcbc, #ff7070);
-      color: #fff;
-      border-color: #ff9f9f;
-    }
+        nav .btn-discord {
+            background: transparent;
+            border: 2px solid #825de5;
+            color: #825de5;
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
 
-    .playmakers {
-      border-color: #ffe16b;
-      color: #ffe16b;
-    }
-    .playmakers:hover {
-      background: linear-gradient(90deg, #fff391, #ffce00);
-      color: #15141b;
-      border-color: #ffe16b;
-    }
+        nav .btn-discord:hover {
+            background-color: #825de5;
+            color: #fff;
+        }
 
-    .construcciones {
-      border-color: #71e38f;
-      color: #71e38f;
-    }
-    .construcciones:hover {
-      background: linear-gradient(90deg, #9fffc1, #42c478);
-      color: #15141b;
-      border-color: #71e38f;
-    }
+        /* Header */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #825de5 0%, #339fd0 100%);
+            padding-top: 80px; /* para compensar navbar fija */
+        }
 
-    .portafolio {
-      border-color: #84a7ff;
-      color: #84a7ff;
-    }
-    .portafolio:hover {
-      background: linear-gradient(90deg, #c2d3ff, #5f83ff);
-      color: #15141b;
-      border-color: #84a7ff;
-    }
+        #home .content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
 
-    a {
-      text-decoration: none;
-      width: 100%;
-      display: block;
-    }
+        #home .profile-pic {
+            flex: 1 1 300px;
+            max-width: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 20px #61369aaa;
+            border: 5px solid #97efe4;
+        }
 
-    /* Botón Ko-fi (esquina inferior izquierda) */
-    .ko-fi-button {
-      position: fixed;
-      bottom: 24px;
-      left: 24px;
-      width: 48px;
-      opacity: 0.82;
-      filter: grayscale(0.2);
-      transition: opacity 0.2s, filter 0.2s;
-      z-index: 15;
-    }
-    .ko-fi-button:hover {
-      opacity: 1;
-      filter: grayscale(0);
-    }
+        #home .profile-pic img {
+            width: 100%;
+            display: block;
+        }
 
-    /* Contenedor botones X y Discord (esquina inferior derecha) */
-    .social-buttons {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      display: flex;
-      gap: 12px;
-      z-index: 15;
-    }
+        #home .text-content {
+            flex: 1 1 400px;
+            color: #fff;
+        }
 
-    .social-button {
-      width: 48px;
-      height: 48px;
-      background: rgba(21,20,27,0.85);
-      border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      border: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
-    }
-    .social-button:hover {
-      box-shadow: 0 4px 24px rgba(129,92,227,0.13);
-      transform: scale(1.1);
-      background: linear-gradient(90deg, var(--azul-base), var(--morado-base));
-      border-color: var(--azul-linea);
-    }
-    .social-button img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
+        #home .text-content h3 {
+            font-weight: 400;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1.2px;
+        }
 
+        #home .text-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 2px #fff;
+            margin-bottom: 0.5rem;
+            user-select: none;
+        }
 
-    @media (max-width: 480px) {
-      .container {
-        max-width: 98vw;
-        gap: 1.2rem;
-      }
-      .top-image {
-        max-width: 100px;
-      }
-      .glass-card {
-        padding: 1.2rem 0.6rem;
-      }
-      .glass-card h1 {
-        font-size: 1.1rem;
-      }
-      .boton {
-        font-size: 0.97rem;
-        padding: 0.7rem 0;
-      }
-      .social-button, .ko-fi-button {
-        width: 40px;
-        height: 40px;
-      }
-      .social-button img {
-        width: 20px;
-        height: 20px;
-      }
-      .ko-fi-button {
-        width: 40px;
-      }
+        #home .typed-text-output {
+            font-weight: 300;
+            font-size: 1.5rem;
+            color: #97efe4;
+            min-height: 2rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        #home .btn-quote {
+            padding: 0.8rem 2rem;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            background: transparent;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        #home .btn-quote:hover {
+            background-color: #97efe4;
+            color: #121212;
+            border-color: #97efe4;
+        }
+
+        /* Sección títulos grandes con efecto */
+        .section-title {
+            position: relative;
+            text-align: center;
+            margin: 4rem 0 3rem;
+            user-select: none;
+        }
+
+        .section-title h1.bg-text {
+            font-size: 6rem;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1px #dee2e6;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 0;
+        }
+
+        .section-title h1.fg-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            font-weight: 700;
+            color: #825de5;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* About */
+        #about .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        #about .about-img {
+            flex: 1 1 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 20px #339fd0aa;
+        }
+
+        #about .about-img img {
+            width: 100%;
+            display: block;
+            border-radius: 15px;
+        }
+
+        #about .about-text {
+            flex: 1 1 500px;
+        }
+
+        #about .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #97efe4;
+        }
+
+        #about .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+
+        #about .about-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        #about .about-list h6 {
+            font-weight: 600;
+            color: #825de5;
+        }
+
+        #about .about-list span {
+            color: #97efe4;
+            font-weight: 400;
+        }
+
+        /* Skill */
+        #skill .content {
+            margin-bottom: 4rem;
+        }
+
+        #skill .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill {
+            background: #1e1e1e;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #61369a88;
+        }
+
+        .skill h6 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #97efe4;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+        }
+
+        .progress-bar {
+            height: 12px;
+            border-radius: 10px;
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .progress-bar > div {
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .progress-95 { background-color: #825de5; width: 95%; }
+        .progress-55 { background-color: #339fd0; width: 55%; }
+        .progress-100 { background-color: #97efe4; width: 100%; }
+        .progress-90 { background-color: #61369a; width: 90%; }
+        .progress-85 { background-color: #339fd0; width: 85%; }
+
+        /* Services */
+        #service .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-item {
+            background: #1e1e1e;
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #825de588;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 30px #97efe4cc;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #825de5;
+            margin-bottom: 1rem;
+            /* Aquí puedes agregar íconos o imágenes */
+        }
+
+        .service-item h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #97efe4;
+        }
+
+        .service-item p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .service-item a {
+            font-weight: 600;
+            color: #339fd0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .service-item a:hover {
+            border-color: #339fd0;
+        }
+
+        /* Testimonial */
+        #testimonial {
+            background: linear-gradient(135deg, #339fd0 0%, #61369a 100%);
+            padding: 4rem 0;
+            color: #fff;
+        }
+
+        #testimonial .testimonial-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #testimonial .quote-icon {
+            font-size: 3rem;
+            color: #97efe4;
+            margin-bottom: 1.5rem;
+            /* Aquí puedes agregar ícono de comillas */
+        }
+
+        #testimonial .testimonial-text {
+            font-style: italic;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #testimonial .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            box-shadow: 0 0 10px #825de5;
+        }
+
+        #testimonial .testimonial-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        #testimonial .testimonial-role {
+            font-size: 0.9rem;
+            color: #97efe4cc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #121212;
+            color: #97efe4;
+            padding: 2rem 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            user-select: none;
+        }
+
+        footer a {
+            color: #825de5;
+            font-weight: 700;
+        }
+
+        footer a:hover {
+            color: #97efe4;
+        }
+
+        footer .social-links {
+            margin-bottom: 1rem;
+        }
+
+        footer .social-links a {
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            color: #97efe4;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #825de5;
+        }
+
+        /* Scroll to bottom */
+        .scroll-to-bottom {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: #97efe4;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            user-select: none;
+            z-index: 1000;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: #825de5;
+            color: #fff;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 10px #825de5aa;
+            transition: background-color 0.3s ease;
+            user-select: none;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background-color: #97efe4;
+            color: #121212;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            nav .btn-discord {
+                display: none;
+            }
+
+            #home .content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #home .text-content h1 {
+                font-size: 2.5rem;
+                -webkit-text-stroke: 1.5px #fff;
+            }
+
+            #about .content,
+            #skill .skills-grid,
+            #service .services-grid {
+                grid-template-columns: 1fr;
+                display: block;
+            }
+
+            #about .about-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Skill */
+#skill .content {
+    margin-bottom: 4rem;
+}
+
+#skill .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.skill {
+    background: #1e1e1e;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #61369a88;
+}
+
+.skill h6 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #97efe4;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.progress-bar {
+    height: 12px;
+    border-radius: 10px;
+    background-color: #333;
+    overflow: hidden;
+}
+
+.progress-bar > div {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.progress-95 { background-color: #825de5; width: 95%; }
+.progress-55 { background-color: #339fd0; width: 55%; }
+.progress-100 { background-color: #97efe4; width: 100%; }
+.progress-90 { background-color: #61369a; width: 90%; }
+.progress-85 { background-color: #339fd0; width: 85%; }
+
+/* Services */
+#service .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.service-item {
+    background: #1e1e1e;
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #825de588;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px #97efe4cc;
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: #825de5;
+    margin-bottom: 1rem;
+    /* Aquí puedes agregar íconos o imágenes */
+}
+
+.service-item h4 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #97efe4;
+}
+
+.service-item p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.service-item a {
+    font-weight: 600;
+    color: #339fd0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.service-item a:hover {
+    border-color: #339fd0;
+}
+
+/* Testimonial */
+#testimonial {
+    background: linear-gradient(135deg, #339fd0 0%, #61369a 100%);
+    padding: 4rem 0;
+    color: #fff;
+}
+
+#testimonial .testimonial-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#testimonial .quote-icon {
+    font-size: 3rem;
+    color: #97efe4;
+    margin-bottom: 1.5rem;
+    /* Aquí puedes agregar ícono de comillas */
+}
+
+#testimonial .testimonial-text {
+    font-style: italic;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+#testimonial .testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    box-shadow: 0 0 10px #825de5;
+}
+
+#testimonial .testimonial-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+}
+
+#testimonial .testimonial-role {
+    font-size: 0.9rem;
+    color: #97efe4cc;
+}
+
+/* Footer */
+footer {
+    background-color: #121212;
+    color: #97efe4;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+footer a {
+    color: #825de5;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.5rem;
+    width: 32px;
+    height: 32px;
+    transition: color 0.3s ease;
+}
+
+footer a svg {
+    fill: currentColor;
+    width: 20px;
+    height: 20px;
+}
+
+footer a:hover {
+    color: #97efe4;
+}
+
+footer .social-links {
+    margin-bottom: 1rem;
+}
+
+/* Scroll to bottom */
+.scroll-to-bottom {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #97efe4;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    user-select: none;
+    z-index: 1000;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
     }
-  </style>
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* Back to top */
+.back-to-top {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #825de5;
+    color: #fff;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px #825de5aa;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    z-index: 1000;
+}
+
+.back-to-top:hover {
+    background-color: #97efe4;
+    color: #121212;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #skill .skills-grid,
+    #service .services-grid {
+        grid-template-columns: 1fr;
+        display: block;
+    }
+}
+
+    </style>
 </head>
+
 <body>
+    <!-- Navbar Start -->
+    <nav>
+        <div class="brand">Manco<span>Studios</span></div>
+        <ul>
+            <li><a href="#home" class="active">Inicio</a></li>
+            <li><a href="#about">Nosotros</a></li>
+            <li><a href="#skill">Habilidades</a></li>
+            <li><a href="#service">Servicios</a></li>
+            <li><a href="#testimonial">Clientes</a></li>
+            <li><a href="https://discord.gg/G8b7vYjCEB" target="_blank" rel="noopener">Contacto</a></li>
+            <li><a href="/skins"></li>
+        </ul>
+        <a href="https://discord.gg/G8b7vYjCEB" target="_blank" rel="noopener" class="btn-discord">Discord</a>
+    </nav>
+    <!-- Navbar End -->
 
-  <div class="container">
-    <img src="textoms.png" alt="Texto MS" class="top-image" />
+    <!-- Header Start -->
+    <section id="home">
+        <div class="container content">
+            <div class="profile-pic">
+                <!-- Aquí puedes agregar tu imagen de perfil -->
+                <img src="perfil.png" alt="Perfil MancoStudios">
+            </div>
+            <div class="text-content">
+                <h3>Somos</h3>
+                <h1>MancoStudios</h1>
+                <div class="typed-text-output" id="typed-output">PlayMakers, Desarrolladores de eventos, Series de roleplay, Construcciones, Scripts</div>
+                <a href="https://discord.gg/G8b7vYjCEB" target="_blank" rel="noopener" class="btn-quote">Cotización</a>
+            </div>
+        </div>
+    </section>
+    <!-- Header End -->
 
-    <div class="glass-card">
-      <h1>"Manco de nombre, pro en desarrollo."</h1>
-      <div class="botones">
-        <a href="/skins"><button class="boton skins">Skins</button></a>
-        <a href="/eventos"><button class="boton eventos">Eventos y Series</button></a>
-        <a href="/playmakers"><button class="boton playmakers">PlayMakers</button></a>
-        <a href="/construcciones"><button class="boton construcciones">Construcciones</button></a>
-        <a href="https://drive.google.com/file/d/1C-9UlZQmKCUVVM-Vl4RRpOFIpIVBjHSS/view?usp=sharing" target="_blank" rel="noopener noreferrer"><button class="boton portafolio">Portafolio</button></a>
-      </div>
+    <!-- About Start -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h1 class="bg-text">Nosotros</h1>
+            </div>
+            <div class="content">
+                <div class="about-img">
+                    <!-- Imagen sobre nosotros -->
+                    <img src="perfil.png" alt="Nosotros MancoStudios">
+                </div>
+                <div class="about-text">
+                    <h3>Estudio de desarrollo</h3>
+                    <p>Nos encargamos de desarrollar y administrar tus eventos o series para tu comunidad, ajustamos todo para una experiencia única y sin comparación.</p>
+                    <div class="about-list">
+                        <h6>Arte: <span>Cherry Pitaya, NGArt, Suky, P4W</span></h6>
+                        <h6>Desarrollo: <span>Soy Kaz</span></h6>
+                        <h6>Construcción: <span>Momo_TG / mrgamesrulo</span></h6>
+                        <h6>Lore y dirección: <span>Momo_TG / Soy Kaz</span></h6>
+                        <h6>Launcher: <span>Panic DRK</span></h6>
+                        <h6>PlayMakers: <span>Aze, MitsubaPlay, Sr Plantin, DanyZitro, Mylowtec, Felulin, Emily, Eru, Kaz, mrgamesrulo</span></h6>
+                        <h6>Email: <span>kaz@mancostudios.xyz</span></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About End -->
+
+    <!-- Skill Start -->
+    <section id="skill">
+        <div class="container">
+            <div class="section-title">
+                <h1 class="bg-text">Experiencia</h1>
+            </div>
+            <div class="skills-grid">
+                <div class="skill">
+                    <h6>Scripts/Plugins personalizados <span>95%</span></h6>
+                    <div class="progress-bar"><div class="progress-95"></div></div>
+                </div>
+                <div class="skill">
+                    <h6>Mods personalizados <span>55%</span></h6>
+                    <div class="progress-bar"><div class="progress-55"></div></div>
+                </div>
+                <div class="skill">
+                    <h6>Construcciones personalizadas <span>100%</span></h6>
+                    <div class="progress-bar"><div class="progress-100"></div></div>
+                </div>
+                <div class="skill">
+                    <h6>Roleplay <span>90%</span></h6>
+                    <div class="progress-bar"><div class="progress-90"></div></div>
+                </div>
+                <div class="skill">
+                    <h6>Lore/Historias <span>95%</span></h6>
+                    <div class="progress-bar"><div class="progress-95"></div></div>
+                </div>
+                <div class="skill">
+                    <h6>Renders/Flyers/Publicidad <span>85%</span></h6>
+                    <div class="progress-bar"><div class="progress-85"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skill End -->
+
+    <!-- Services Start -->
+    <section id="service">
+        <div class="container">
+            <div class="section-title">
+                <h1 class="bg-text">Nuestros Servicios</h1>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <!-- Aquí puedes agregar ícono o imagen para Eventos -->
+                        <!-- Ejemplo: <img src="img/icon-eventos.svg" alt="Eventos"> -->
+                    </div>
+                    <h4>Eventos</h4>
+                    <p>Podemos desarrollarte eventos completos desde la construcción, programación/scripts de estos, hasta las invitaciones, publicidad, y todo lo que necesites para dar la experiencia que quieres a tu comunidad, siempre cuidando tu visión del proyecto.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <!-- Aquí puedes agregar ícono o imagen para PlayMakers -->
+                    </div>
+                    <h4>PlayMakers</h4>
+                    <p>Los PlayMakers son el corazón de tus historias, por eso nuestro equipo está especializado en guiar esa narrativa que deseas, creando grandes historias y adaptándose ante cualquier situación. Creemos que la magia del roleplay es la adaptación y la improvisación, la creatividad en cuestión de segundos para adaptarnos en nuestra especialidad, desde villanos épicos, hasta simples vendedores. Nuestra misión es dirigir y enriquecer el desarrollo de tus tramas, asegurando que cada interacción tenga sentido y aporte al mundo que construimos juntos.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <!-- Aquí puedes agregar ícono o imagen para Construcciones -->
+                    </div>
+                    <h4>Construcciones</h4>
+                    <p>En MancoStudios, las construcciones y decoraciones son mucho más que simples estructuras; son el alma y el escenario donde se desarrollan nuestras historias y eventos. Nuestro equipo especializado crea ambientes detallados y únicos que enriquecen la experiencia de juego, aportando realismo y estilo a cada rincón. Desde impresionantes edificaciones hasta detalles decorativos cuidadosamente diseñados, cada creación está pensada para inspirar, sorprender y sumergir a la comunidad en mundos vibrantes y llenos de vida. Descubre cómo nuestras construcciones y decoraciones transforman el espacio en un lugar donde la imaginación no tiene límites.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <!-- Aquí puedes agregar ícono o imagen para Series de Roleplay -->
+                    </div>
+                    <h4>Series de Roleplay</h4>
+                    <p>Desde escribir la historia, hasta darle la mejor experiencia a tus ideas y creatividad.</p>
+                    <a href="https://drive.google.com/file/d/1C-9UlZQmKCUVVM-Vl4RRpOFIpIVBjHSS/view" target="_blank" rel="noopener">Saber más.</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="testimonial">
+        <div class="container">
+            <div class="section-title">
+                <h1 class="bg-text">Nuestros clientes / Partners</h1>
+            </div>
+            <div class="testimonial-container">
+                <div class="quote-icon">
+                    &#8220;
+                </div>
+                <div class="testimonial-text">
+                    Evento de Minijuegos basado en los juegos típicos del Perú.
+                </div>
+                <img class="testimonial-img" src="img/testimonial-1.jpg" alt="Fercho">
+                <div class="testimonial-name">Fercho</div>
+                <div class="testimonial-role">Cliente</div>
+            </div>
+        </div>
+    </section>
+    <footer>
+    <div class="social-links">
+        <a href="#" class="twitter" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M23.954 4.569c-0.885 0.392-1.83 0.656-2.825 0.775 1.014-0.609 1.794-1.574 2.163-2.724-0.951 0.564-2.005 0.974-3.127 1.195-0.897-0.957-2.178-1.555-3.594-1.555-2.723 0-4.928 2.206-4.928 4.928 0 0.39 0.045 0.765 0.127 1.124-4.094-0.205-7.725-2.165-10.158-5.144-0.424 0.729-0.666 1.577-0.666 2.476 0 1.708 0.87 3.216 2.188 4.099-0.807-0.026-1.566-0.247-2.228-0.616v0.061c0 2.385 1.693 4.374 3.946 4.827-0.413 0.111-0.849 0.171-1.296 0.171-0.317 0-0.626-0.03-0.928-0.086 0.627 1.956 2.444 3.379 4.6 3.419-1.68 1.318-3.808 2.105-6.115 2.105-0.397 0-0.789-0.023-1.175-0.069 2.179 1.397 4.768 2.213 7.557 2.213 9.054 0 14.002-7.496 14.002-13.986 0-0.21-0.005-0.423-0.014-0.633 0.962-0.695 1.797-1.562 2.457-2.549z"/>
+            </svg>
+        </a>
+        <a href="#" class="youtube" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M19.615 3.184c-0.21-0.79-0.83-1.41-1.62-1.62-1.43-0.38-7.995-0.38-7.995-0.38s-6.565 0-7.995 0.38c-0.79 0.21-1.41 0.83-1.62 1.62-0.38 1.43-0.38 4.41-0.38 4.41s0 2.98 0.38 4.41c0.21 0.79 0.83 1.41 1.62 1.62 1.43 0.38 7.995 0.38 7.995 0.38s6.565 0 7.995-0.38c0.79-0.21 1.41-0.83 1.62-1.62 0.38-1.43 0.38-4.41 0.38-4.41s0-2.98-0.38-4.41zm-11.615 6.816v-5l4.5 2.5-4.5 2.5z"/>
+            </svg>
+        </a>
+        <a href="#" class="tiktok" aria-label="TikTok" title="TikTok" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M9 3h3.75a3.75 3.75 0 0 0 3.75 3.75v3a6.75 6.75 0 1 1-6.75-6.75V3z"/>
+            </svg>
+        </a>
+        <a href="#" class="instagram" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-5 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/>
+            </svg>
+        </a>
     </div>
-  </div>
+    <p>&copy; <a href="#">Pagina</a> by <a href="https://x.com/EseDjKaz" target="_blank" rel="noopener">Kaz</a></p>
+    </footer>
+    <!-- Footer End -->
 
-  <!-- Botón Ko-fi -->
-  <a href="https://ko-fi.com/mancostudios" target="_blank" rel="noopener noreferrer">
-    <img src="https://img.icons8.com/?size=100&id=wWs0Mvy8dMp2&format=png&color=000000" alt="Ko-fi" class="ko-fi-button" />
-  </a>
+    <!-- Scroll to Bottom -->
+    <div class="scroll-to-bottom" title="Scroll to bottom" onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });">
+        &#x25BC;
+    </div>
 
-  <!-- Botones sociales X y Discord -->
-  <div class="social-buttons">
-    <a href="https://x.com/MancoStudios" target="_blank" rel="noopener noreferrer" class="social-button" aria-label="X">
-      <img src="x.png" alt="Icono X" />
-    </a>
-    <a href="https://discord.gg/G8b7vYjCEB" target="_blank" rel="noopener noreferrer" class="social-button" aria-label="Discord">
-      <img src="dc.png" alt="Icono Discord" />
-    </a>
-  </div>
-
+    <!-- Back to Top -->
+    <div class="back-to-top" title="Back to top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+        &#x21D1;
+    </div>
 </body>
+
 </html>
